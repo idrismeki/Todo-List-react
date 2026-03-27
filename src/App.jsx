@@ -31,25 +31,15 @@ function App() {
   const [triDesc, setTriDesc] = useState(true)
 
   useEffect(() => {
-    chargerBackup()
-  }, [])
-
-  const chargerBackup = () => {
-    setTaches(backupData.taches.map(t => ({
-      ...t,
-      equipiers: t.equipiers || []
-    })))
-    setDossiers(backupData.dossiers)
-    setRelations(backupData.relations)
-  }
-
-  const resetDonnees = () => {
-    if (window.confirm('Êtes-vous sûr(e) ? Toutes les données seront réinitialisées.')) {
-      setTaches([])
-      setDossiers([])
-      setRelations([])
+    if (window.confirm('Voulez-vous charger les données par défaut ?')) {
+      setTaches(backupData.taches.map(t => ({
+        ...t,
+        equipiers: t.equipiers || []
+      })))
+      setDossiers(backupData.dossiers)
+      setRelations(backupData.relations)
     }
-  }
+  }, [])
 
   const getDossiersDeTache = (tacheId) => {
     const dossierIds = relations
@@ -69,7 +59,6 @@ function App() {
       result = result.filter(t => filtreEtats.includes(t.etat))
     }
 
-    // Filtre par vue active (dossier sélectionné dans la sidebar)
     if (typeof activeView === 'number') {
       result = result.filter(t => {
         const tacheDossiers = relations
@@ -122,7 +111,6 @@ function App() {
 
     const dossierIds = nouvelleTache.dossierIds ? [...nouvelleTache.dossierIds] : []
 
-    // Si on est sur la vue d'un dossier, l'associer automatiquement
     if (typeof activeView === 'number' && !dossierIds.includes(activeView)) {
       dossierIds.push(activeView)
     }
@@ -233,7 +221,6 @@ function App() {
         nbTotal={nbTotal}
         nbNonFinis={nbNonFinis}
         taches={taches}
-        onReset={resetDonnees}
       />
 
       <div className="app-layout">
@@ -262,7 +249,7 @@ function App() {
                 onClick={() => setShowFiltre(!showFiltre)}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/>
+                  <line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="11" y1="18" x2="13" y2="18" />
                 </svg>
                 Filtrer
               </button>

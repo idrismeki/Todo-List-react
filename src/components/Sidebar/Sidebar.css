@@ -2,9 +2,9 @@
   width: 280px;
   background: var(--todoist-sidebar);
   border-right: 1px solid var(--todoist-border);
-  height: calc(100vh - 44px);
+  height: calc(100vh - 56px);
   position: fixed;
-  top: 44px;
+  top: 56px;
   left: 0;
   overflow-y: auto;
   padding: 12px 12px 24px;

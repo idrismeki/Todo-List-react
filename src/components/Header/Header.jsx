@@ -1,7 +1,7 @@
 import { ETATS } from '../../constants'
 import './Header.css'
 
-function Header({ onToggleSidebar, nbTotal, nbNonFinis, taches, onReset }) {
+function Header({ onToggleSidebar, nbTotal, nbNonFinis, taches }) {
   // Camembert
   const etatsCount = Object.values(ETATS).map(etat => ({
     label: etat,
@@ -65,13 +65,7 @@ function Header({ onToggleSidebar, nbTotal, nbNonFinis, taches, onReset }) {
         )}
       </div>
 
-      <div className="header-right">
-        <button className="header-btn reset-btn" onClick={onReset} title="Réinitialiser">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-11.36L1 10"/>
-          </svg>
-        </button>
-      </div>
+      <div className="header-right" />
     </header>
   )
 }

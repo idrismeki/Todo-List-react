@@ -3,12 +3,12 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 44px;
+  height: 56px;
   background: var(--todoist-red);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 16px;
   z-index: 100;
 }
 
