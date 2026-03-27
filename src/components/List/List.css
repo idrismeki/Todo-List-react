@@ -1,0 +1,30 @@
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 16px;
+  text-align: center;
+}
+
+.empty-illustration {
+  margin-bottom: 16px;
+}
+
+.empty-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--todoist-text);
+  margin: 0 0 4px;
+}
+
+.empty-desc {
+  font-size: 13px;
+  color: var(--todoist-text-tertiary);
+  margin: 0;
+}

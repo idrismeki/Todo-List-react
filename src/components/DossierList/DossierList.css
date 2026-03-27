@@ -1,0 +1,11 @@
+.dossier-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dossier-list-empty {
+  text-align: center;
+  padding: 60px 16px;
+  color: var(--todoist-text-tertiary);
+  font-size: 14px;
+}

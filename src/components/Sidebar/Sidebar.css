@@ -1,0 +1,136 @@
+.sidebar {
+  width: 280px;
+  background: var(--todoist-sidebar);
+  border-right: 1px solid var(--todoist-border);
+  height: calc(100vh - 44px);
+  position: fixed;
+  top: 44px;
+  left: 0;
+  overflow-y: auto;
+  padding: 12px 12px 24px;
+  transition: transform 0.2s ease;
+  z-index: 50;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-bottom: 24px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: var(--todoist-text);
+  width: 100%;
+  text-align: left;
+  transition: background 0.1s;
+}
+
+.sidebar-item:hover {
+  background: var(--todoist-sidebar-hover);
+}
+
+.sidebar-item.active {
+  background: var(--todoist-sidebar-active);
+  font-weight: 500;
+}
+
+.sidebar-icon {
+  flex-shrink: 0;
+  color: var(--todoist-text-secondary);
+}
+
+.today-icon {
+  color: var(--todoist-green);
+}
+
+.sidebar-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-count {
+  font-size: 12px;
+  color: var(--todoist-text-tertiary);
+  min-width: 18px;
+  text-align: right;
+}
+
+.today-count {
+  color: var(--todoist-green);
+  font-weight: 600;
+}
+
+.sidebar-section {
+  margin-top: 8px;
+}
+
+.sidebar-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+}
+
+.sidebar-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--todoist-text-secondary);
+}
+
+.sidebar-add-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--todoist-text-secondary);
+  transition: all 0.1s;
+}
+
+.sidebar-add-btn:hover {
+  background: var(--todoist-sidebar-hover);
+  color: var(--todoist-text);
+}
+
+.sidebar-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.sidebar-project {
+  padding-left: 14px;
+}
+
+.project-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 16px rgba(0,0,0,0.1);
+  }
+}

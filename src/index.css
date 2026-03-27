@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --todoist-red: #dc4c3e;
+  --todoist-red-hover: #c53727;
+  --todoist-bg: #fafafa;
+  --todoist-sidebar: #fcfaf8;
+  --todoist-sidebar-hover: #f0eeeb;
+  --todoist-sidebar-active: #ece8e4;
+  --todoist-white: #ffffff;
+  --todoist-border: #f0f0f0;
+  --todoist-border-task: #e8e8e8;
+  --todoist-text: #202020;
+  --todoist-text-secondary: #666;
+  --todoist-text-tertiary: #999;
+  --todoist-text-placeholder: #aaa;
+  --todoist-green: #058527;
+  --todoist-orange: #eb8909;
+  --todoist-blue: #246fe0;
+  --todoist-purple: #8f4700;
+  --todoist-shadow: 0 1px 8px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--todoist-bg);
+  color: var(--todoist-text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--todoist-text);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}

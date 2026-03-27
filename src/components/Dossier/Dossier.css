@@ -1,0 +1,157 @@
+.dossier-card {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--todoist-border-task);
+}
+
+.dossier-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dossier-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.dossier-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.dossier-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.dossier-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--todoist-text);
+}
+
+.dossier-desc {
+  font-size: 12px;
+  color: var(--todoist-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dossier-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dossier-task-count {
+  font-size: 12px;
+  color: var(--todoist-text-tertiary);
+  min-width: 20px;
+  text-align: right;
+}
+
+.dossier-action {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--todoist-text-tertiary);
+  transition: all 0.1s;
+  opacity: 0;
+}
+
+.dossier-card:hover .dossier-action {
+  opacity: 1;
+}
+
+.dossier-action:hover {
+  background: #f0f0f0;
+  color: var(--todoist-text);
+}
+
+.dossier-action-delete:hover {
+  color: var(--todoist-red);
+}
+
+/* Edit mode */
+.dossier-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.dossier-input, .dossier-textarea {
+  padding: 8px 10px;
+  border: 1px solid var(--todoist-border);
+  border-radius: 5px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+  color: var(--todoist-text);
+}
+
+.dossier-input:focus, .dossier-textarea:focus {
+  border-color: var(--todoist-text-secondary);
+}
+
+.dossier-colors {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dossier-color-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+}
+
+.dossier-color-dot.selected {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px currentColor;
+  transform: scale(1.1);
+}
+
+.dossier-edit-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.dossier-btn-cancel {
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-size: 12px;
+  background: #f5f5f5;
+  color: var(--todoist-text-secondary);
+}
+
+.dossier-btn-cancel:hover {
+  background: #eee;
+}
+
+.dossier-btn-save {
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--todoist-red);
+  color: white;
+}
+
+.dossier-btn-save:hover {
+  background: var(--todoist-red-hover);
+}

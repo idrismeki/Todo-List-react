@@ -1,0 +1,287 @@
+.tache {
+  border-bottom: 1px solid var(--todoist-border-task);
+  transition: background 0.1s;
+}
+
+.tache:hover {
+  background: #fafafa;
+}
+
+.tache.completed {
+  opacity: 0.5;
+}
+
+.tache-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: all 0.15s;
+  background: transparent;
+}
+
+.checkbox:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.completed .checkbox {
+  background: var(--todoist-text-tertiary);
+  border-color: var(--todoist-text-tertiary) !important;
+}
+
+.tache-content {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.tache-line1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tache-title {
+  font-size: 14px;
+  color: var(--todoist-text);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.title-done {
+  text-decoration: line-through;
+  color: var(--todoist-text-tertiary);
+}
+
+.tache-line2 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.tache-desc-preview {
+  font-size: 12px;
+  color: var(--todoist-text-tertiary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tache-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tache-date {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tache-project-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--todoist-text-secondary);
+  cursor: pointer;
+  padding: 1px 0;
+  transition: color 0.1s;
+}
+
+.tache-project-tag:hover {
+  color: var(--todoist-text);
+}
+
+.tache-project-tag.removable {
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.tag-remove {
+  font-size: 14px;
+  color: var(--todoist-text-tertiary);
+  padding: 0 0 0 2px;
+  line-height: 1;
+}
+
+.tag-remove:hover {
+  color: var(--todoist-red);
+}
+
+.tache-more-tag {
+  font-size: 11px;
+  color: var(--todoist-text-tertiary);
+  background: #f0f0f0;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.tache-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.1s;
+  flex-shrink: 0;
+}
+
+.tache-actions.visible {
+  opacity: 1;
+}
+
+.tache-action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--todoist-text-secondary);
+  transition: all 0.1s;
+}
+
+.tache-action-btn:hover {
+  background: #f0f0f0;
+  color: var(--todoist-text);
+}
+
+.tache-etat-select {
+  padding: 2px 4px;
+  border: 1px solid var(--todoist-border-task);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--todoist-text-secondary);
+  background: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.tache-expanded {
+  padding: 8px 0 12px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tache-description {
+  font-size: 13px;
+  color: var(--todoist-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tache-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: var(--todoist-text-tertiary);
+  min-width: 60px;
+}
+
+.detail-value {
+  font-size: 12px;
+  color: var(--todoist-text-secondary);
+}
+
+.etat-badge {
+  font-weight: 600;
+}
+
+.equipiers-list {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.equipier-chip {
+  font-size: 12px;
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: var(--todoist-text-secondary);
+}
+
+.tache-dossiers-complet {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dossier-tags-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.add-project-btn {
+  font-size: 12px;
+  color: var(--todoist-text-tertiary);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px dashed var(--todoist-border-task);
+  transition: all 0.1s;
+}
+
+.add-project-btn:hover {
+  border-color: var(--todoist-text-secondary);
+  color: var(--todoist-text-secondary);
+}
+
+.add-project-dropdown {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: #f5f5f5;
+  color: var(--todoist-text-secondary);
+  transition: background 0.1s;
+}
+
+.dropdown-item:hover {
+  background: #eee;
+}
