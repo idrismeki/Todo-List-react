@@ -85,13 +85,13 @@ function App() {
     result = result.filter(t => new Date(t.date_echeance) >= uneSemaineAvant)
 
     result.sort((a, b) => {
-      if (tri === TRI_OPTIONS.NOM) {
+      if (triActif === TRI_OPTIONS.NOM) {
         const valA = a.title.toLowerCase()
         const valB = b.title.toLowerCase()
         return triDesc ? valB.localeCompare(valA) : valA.localeCompare(valB)
       } else {
-        const valA = new Date(a[tri])
-        const valB = new Date(b[tri])
+        const valA = new Date(a[triActif])
+        const valB = new Date(b[triActif])
         return triDesc ? valB - valA : valA - valB
       }
     })
@@ -213,6 +213,14 @@ function App() {
   }
 
   const isDossierView = activeView === 'dossiers'
+  const isDossierTaskView = typeof activeView === 'number'
+  const showFiltres = !isDossierView
+  const triActif = isDossierTaskView && tri === TRI_OPTIONS.DATE_ECHEANCE
+    ? TRI_OPTIONS.DATE_CREATION
+    : tri
+  const triDisponibles = isDossierTaskView
+    ? [TRI_OPTIONS.DATE_CREATION, TRI_OPTIONS.NOM]
+    : [TRI_OPTIONS.DATE_ECHEANCE, TRI_OPTIONS.DATE_CREATION, TRI_OPTIONS.NOM]
 
   return (
     <div className="app">
@@ -243,26 +251,29 @@ function App() {
               </h1>
               <span className="content-count">{getTachesFiltrees().length}</span>
             </div>
-            <div className="content-actions">
-              <button
-                className={`action-btn ${showFiltre ? 'active' : ''}`}
-                onClick={() => setShowFiltre(!showFiltre)}
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="11" y1="18" x2="13" y2="18" />
-                </svg>
-                Filtrer
-              </button>
-              <Tri
-                tri={tri}
-                triDesc={triDesc}
-                onChangeTri={setTri}
-                onToggleDirection={() => setTriDesc(!triDesc)}
-              />
-            </div>
+            {showFiltres && (
+              <div className="content-actions">
+                <button
+                  className={`action-btn ${showFiltre ? 'active' : ''}`}
+                  onClick={() => setShowFiltre(!showFiltre)}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="11" y1="18" x2="13" y2="18" />
+                  </svg>
+                  Filtrer
+                </button>
+                <Tri
+                  tri={triActif}
+                  triDesc={triDesc}
+                  onChangeTri={setTri}
+                  onToggleDirection={() => setTriDesc(!triDesc)}
+                  options={triDisponibles}
+                />
+              </div>
+            )}
           </div>
 
-          {showFiltre && (
+          {showFiltres && showFiltre && (
             <Filtre
               filtreEnCours={filtreEnCours}
               onToggleEnCours={() => setFiltreEnCours(!filtreEnCours)}
@@ -291,7 +302,7 @@ function App() {
               onAjouterRelation={ajouterRelation}
               onSupprimerRelation={supprimerRelation}
               dossiers={dossiers}
-              onToggleFiltreDossier={toggleFiltreDossier}
+              showEcheance={!isDossierTaskView}
             />
           )}
         </main>

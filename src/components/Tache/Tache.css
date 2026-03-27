@@ -65,6 +65,16 @@
   color: var(--todoist-text-tertiary);
 }
 
+.expand-arrow {
+  color: var(--todoist-text-tertiary);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.tache.expanded .expand-arrow {
+  transform: rotate(90deg);
+}
+
 .tache-line2 {
   display: flex;
   flex-direction: column;
@@ -140,6 +150,17 @@
   background: #f0f0f0;
   padding: 1px 5px;
   border-radius: 3px;
+}
+
+.equipier-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--todoist-text-secondary);
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .tache-actions {

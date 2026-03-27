@@ -1,7 +1,7 @@
 import Tache from '../Tache/Tache'
 import './List.css'
 
-function List({ taches, getDossiersDeTache, onChangerEtat, onEditer, onAjouterRelation, onSupprimerRelation, dossiers, onToggleFiltreDossier }) {
+function List({ taches, getDossiersDeTache, onChangerEtat, onEditer, onAjouterRelation, onSupprimerRelation, dossiers, showEcheance = true }) {
   if (taches.length === 0) {
     return (
       <div className="list-empty">
@@ -28,7 +28,7 @@ function List({ taches, getDossiersDeTache, onChangerEtat, onEditer, onAjouterRe
           onAjouterRelation={onAjouterRelation}
           onSupprimerRelation={onSupprimerRelation}
           dossiers={dossiers}
-          onToggleFiltreDossier={onToggleFiltreDossier}
+          showEcheance={showEcheance}
         />
       ))}
     </div>

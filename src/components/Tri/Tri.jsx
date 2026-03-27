@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { TRI_OPTIONS } from '../../constants'
 import './Tri.css'
 
-function Tri({ tri, triDesc, onChangeTri, onToggleDirection }) {
+function Tri({ tri, triDesc, onChangeTri, onToggleDirection, options }) {
   const [open, setOpen] = useState(false)
 
   const labels = {
@@ -10,6 +10,8 @@ function Tri({ tri, triDesc, onChangeTri, onToggleDirection }) {
     [TRI_OPTIONS.DATE_CREATION]: 'Création',
     [TRI_OPTIONS.NOM]: 'Nom',
   }
+
+  const availableOptions = options ?? Object.keys(labels)
 
   return (
     <div className="tri">
@@ -26,13 +28,13 @@ function Tri({ tri, triDesc, onChangeTri, onToggleDirection }) {
           <div className="tri-backdrop" onClick={() => setOpen(false)} />
           <div className="tri-dropdown">
             <div className="tri-dropdown-header">Trier par</div>
-            {Object.entries(labels).map(([key, label]) => (
+            {availableOptions.map((key) => (
               <button
                 key={key}
                 className={`tri-option ${tri === key ? 'active' : ''}`}
                 onClick={() => { onChangeTri(key); setOpen(false) }}
               >
-                {label}
+                {labels[key]}
                 {tri === key && <span className="tri-check">✓</span>}
               </button>
             ))}

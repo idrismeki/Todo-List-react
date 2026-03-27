@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ETATS, ETAT_TERMINE, COULEURS_DOSSIER } from '../../constants'
 import './Tache.css'
 
-function Tache({ tache, dossiersTache, onChangerEtat, onEditer, onAjouterRelation, onSupprimerRelation, dossiers, onToggleFiltreDossier }) {
+function Tache({ tache, dossiersTache, onChangerEtat, onEditer, onAjouterRelation, onSupprimerRelation, dossiers, showEcheance = true }) {
   const [modeComplet, setModeComplet] = useState(false)
   const [showAddDossier, setShowAddDossier] = useState(false)
   const [hovering, setHovering] = useState(false)
@@ -52,12 +52,9 @@ function Tache({ tache, dossiersTache, onChangerEtat, onEditer, onAjouterRelatio
     [ETATS.ABANDONNE]: '#808080',
   }
 
-  const dossiersSimple = dossiersTache.slice(0, 2)
-  const dossiersRestants = dossiersTache.length - 2
-
   return (
     <div
-      className={`tache ${isTermine ? 'completed' : ''}`}
+      className={`tache ${isTermine ? 'completed' : ''} ${modeComplet ? 'expanded' : ''}`}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
@@ -79,6 +76,9 @@ function Tache({ tache, dossiersTache, onChangerEtat, onEditer, onAjouterRelatio
             <span className={`tache-title ${isTermine ? 'title-done' : ''}`}>
               {tache.title}
             </span>
+            <svg className="expand-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
           </div>
 
           <div className="tache-line2">
@@ -86,25 +86,24 @@ function Tache({ tache, dossiersTache, onChangerEtat, onEditer, onAjouterRelatio
               <span className="tache-desc-preview">{tache.description}</span>
             )}
             <div className="tache-tags">
-              <span className="tache-date" style={{ color: getDateColor() }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                {formatDate(tache.date_echeance)}
-              </span>
-
-              {dossiersSimple.map(d => (
-                <span
-                  key={d.id}
-                  className="tache-project-tag"
-                  onClick={(e) => { e.stopPropagation(); onToggleFiltreDossier(d.id) }}
-                >
-                  <span className="tag-dot" style={{ background: COULEURS_DOSSIER[d.color] || d.color }} />
-                  {d.title}
+              {showEcheance && (
+                <span className="tache-date" style={{ color: getDateColor() }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  {formatDate(tache.date_echeance)}
                 </span>
-              ))}
-              {!modeComplet && dossiersRestants > 0 && (
-                <span className="tache-more-tag">+{dossiersRestants}</span>
+              )}
+
+              {tache.equipiers && tache.equipiers.length > 0 && (
+                tache.equipiers.map((equipier, i) => (
+                  <span key={i} className="equipier-tag">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    {equipier.name}
+                  </span>
+                ))
               )}
             </div>
           </div>
@@ -165,7 +164,6 @@ function Tache({ tache, dossiersTache, onChangerEtat, onEditer, onAjouterRelatio
                 <span
                   key={d.id}
                   className="tache-project-tag removable"
-                  onClick={() => onToggleFiltreDossier(d.id)}
                 >
                   <span className="tag-dot" style={{ background: COULEURS_DOSSIER[d.color] || d.color }} />
                   {d.title}
